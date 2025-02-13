@@ -6,7 +6,8 @@ public class Q1Q2Q3 {
         Student st2 = new Student(2, "Abhinav", 12);
         Student st3 = new Student(1, "Avi", 11);
 
-        System.out.println(st1.equals(st2));
-        System.out.println(st1.equals(st3));
+        System.out.println(st1.hashCode());
+        System.out.println(st3.hashCode());
+        System.out.println(st1 == st3);
     }
 }
