@@ -6,7 +6,7 @@ sealed class B extends A permits E{}
 
 non-sealed class C extends A{}
 
-final class D extends A{}
+final class D extends C{}
 
 final class E extends B{}
 
