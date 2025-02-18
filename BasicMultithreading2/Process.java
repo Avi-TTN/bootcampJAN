@@ -26,20 +26,28 @@ public class Process implements Runnable{
                 Thread.sleep((int) (Math.random() * 100));
 
                 if (l1.tryLock()) {
-                    System.out.println(Thread.currentThread().getName() + " locked a Resource " + r1);
-                    r1.take();
+                    try {
+                        System.out.println(Thread.currentThread().getName() + " locked a Resource " + r1);
+                        r1.take();
 
-                    Thread.sleep(1000);
+                        Thread.sleep(1000);
 
-                    if (l2.tryLock()) {
-                        System.out.println(Thread.currentThread().getName() + " locked a Resource " + r2);
-                        r2.take();
-                        System.out.println(Thread.currentThread().getName() + " unlocked the Resource " + r2);
-                        l2.unlock();
-                        flag = false;
+                        if (l2.tryLock()) {
+                            try{
+                                System.out.println(Thread.currentThread().getName() + " locked a Resource " + r2);
+                                r2.take();
+                            }
+                            finally {
+                                System.out.println(Thread.currentThread().getName() + " unlocked the Resource " + r2);
+                                l2.unlock();
+                            }
+                            flag = false;
+                        }
                     }
-                    System.out.println(Thread.currentThread().getName() + " unlocked the Resource " + r1);
-                    l1.unlock();
+                    finally {
+                        System.out.println(Thread.currentThread().getName() + " unlocked the Resource " + r1);
+                        l1.unlock();
+                    };
                 }
             }
             catch (InterruptedException e) {
