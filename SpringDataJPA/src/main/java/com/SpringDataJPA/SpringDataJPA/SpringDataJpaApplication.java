@@ -12,36 +12,10 @@ public class SpringDataJpaApplication {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(SpringDataJpaApplication.class, args);
 		EmployeeService employeeService = context.getBean(EmployeeService.class);
-		//create
-//		employeeService.createEmployee(new Employee("avi", 20, "Gurgaon"));
-
-		//update
-//		employeeService.updateEmployeeAge(1L,20);
-
-		//read
-//		System.out.println(employeeService.readEmployee(1L));
-
-		//delete
-//		employeeService.deleteEmployee(3L);
-
-		//total count
-//		System.out.println(employeeService.totalCount());
-
-		//find all by age along with pagination and sorting
-//		System.out.println(employeeService.ageSortedList(1,2));
-
-		//find by name
-//		System.out.println(employeeService.byName("abhinav"));
-
-		//List of employees starting with 'a'
-//		for(Employee e : employeeService.startingWith("a")){
-//			System.out.println(e);
-//		}
-
-		//list of employees between age lowerBound and upperBound
-		for(Employee e : employeeService.ageBetween(22, 25)){
-			System.out.println(e);
-		}
+//		employeeService.findBySalaryAboveAverageOrderByAgeAscSalaryDesc();
+//		employeeService.updateSalaryLessThanAverageSalary(50000);
+//		employeeService.deleteEmployeeWithMinimumSalary();
+//		employeeService.findByLastNameAsSingh();
+//		employeeService.deleteEmployeeWithAgeGreaterThan(45);
 	}
-
 }

@@ -15,43 +15,29 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public void createEmployee(Employee employee){
-        employeeRepository.save(employee);
-    }
-    public void updateEmployeeAge(Long id, Integer newAge){
-        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Enployee does not exist with id: "+ id));
-        employee.setAge(newAge);
-        employeeRepository.save(employee);
-    }
-
-    public Employee readEmployee(Long id){
-        return employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Enployee does not exist with id: "+ id));
-    }
-
-    public void deleteEmployee(Long id){
-        employeeRepository.deleteById(id);
-    }
-
-    public Long totalCount(){
-        return employeeRepository.count();
-    }
-
-    public List<Employee> ageSortedList(Integer pageNumber, Integer pageSize){
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("age"));
-        return  employeeRepository.findAll(pageable).getContent();
-    }
-
-    public Employee byName(String name){
-        return employeeRepository.findByName(name);
-    }
-
-    public List<Employee> startingWith(String str){
-        return employeeRepository.findAllByNameStartingWith(str);
-    }
-
-    public List<Employee> ageBetween(Integer lowerBound, Integer upperBound){
-        return employeeRepository.findByAgeBetween(lowerBound, upperBound);
-    }
-
+//    public void findBySalaryAboveAverageOrderByAgeAscSalaryDesc(){
+//        for(Object[] arr: employeeRepository.findBySalaryAboveAverageOrderByAgeAscSalaryDesc()){
+//            System.out.println("firstName : " + arr[0]+ " | lastName : " + arr[1]);
+//        }
+//    }
+//
+//    public void updateSalaryLessThanAverageSalary(Integer newSalary) {
+//        Integer avgSalary = employeeRepository.avgSalary();
+//        employeeRepository.updateSalaryLessThanAverageSalary(newSalary, avgSalary);
+//    }
+//
+//    public void deleteEmployeeWithMinimumSalary(){
+//        employeeRepository.deleteEmployeeWithMinimumSalary(employeeRepository.minSalary());
+//    }
+//
+//    public void findByLastNameAsSingh(){
+//        for(Object arr[] : employeeRepository.findByLastNameAsSingh()){
+//            System.out.println("id : " + arr[0] + " | firstName : " + arr[1]+ " | age : " + arr[2]);
+//        }
+//    }
+//
+//    public void deleteEmployeeWithAgeGreaterThan(Integer age){
+//        employeeRepository.deleteEmployeeWithAgeGreaterThan(age);
+//    }
 
 }

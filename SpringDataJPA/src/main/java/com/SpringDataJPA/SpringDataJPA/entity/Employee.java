@@ -4,30 +4,23 @@ package com.SpringDataJPA.SpringDataJPA.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "employeeTable")
 public class Employee {
-    String name;
+    Employee(){};
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "empId")
     Long id;
+    @Column(name = "empFirstName")
+    String firstName;
+    @Column(name = "empLastName")
+    String lastName;
+//    @Column(name = "empSalary")
+//    Integer salary;
+    @Embedded
+    Salary salary;
+    @Column(name = "empAge")
     Integer age;
-    String location;
-
-    public Employee(){
-
-    }
-    public Employee(String name, Integer age, String location) {
-        this.name = name;
-        this.age = age;
-        this.location = location;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Long getId() {
         return id;
@@ -37,29 +30,35 @@ public class Employee {
         this.id = id;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+//    public Integer getSalary() {
+//        return salary;
+//    }
+
+//    public void setSalary(Integer salary) {
+//        this.salary = salary;
+//    }
+
     public Integer getAge() {
         return age;
     }
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", age=" + age +
-                ", location='" + location + '\'' +
-                '}';
     }
 }
